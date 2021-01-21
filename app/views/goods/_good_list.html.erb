@@ -1,0 +1,24 @@
+<table>
+  <thead>
+    <tr>
+      <th>ItemImage</th>
+      <th>ItemName</th>
+      <th>ItemPrice</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% if @items.present? %>
+      <% @items.each do |item| %>
+        <tr class="each_item">
+          <td><%= link_to (image_tag(item["smallImageUrls"][0], style: "margin-left: 50px; margin-right: 50px; width: 100px; height: 130px; display: inline-block;")), item.url %></td>
+          <td class="item_name"><%= link_to "#{item.name}", item.url %></td>
+          <td class="item_price"><%= number_with_delimiter(item.price) %></td>
+        </tr>
+      <% end %>
+    <% else %>
+      <tr>
+        <td><h2>アイテムの検索が可能です。</h2></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
